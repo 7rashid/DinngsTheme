@@ -1,0 +1,38 @@
+{% extends getPartial('page-design') %}
+
+{% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+
+{% block PartialHead %}
+    {% embed getPartial('page-metadata') %}
+        {% block title          trans("Ceres::Template.cancellationRights", {"hyphen": ""}) %}
+        {% block description    trans('Ceres::Template.cancellationRightsMetaDescription') %}
+        {% block robots         ceresConfig.meta.robotsCancellationRights %}
+    {% endembed %}
+{% endblock %}
+
+{% block PageBody %}
+
+    {% set cancellationRights = services.legalInformation.getCancellationRights() %}
+
+    <div class="container-max page-content">
+        <div class="row">
+            <div class="col-12">
+                {% autoescape false %}
+                    <h1>{{ trans("Ceres::Template.cancellationRights", {"hyphen": "&shy;"}) }}</h1>
+                {% endautoescape %}
+
+                <hr class="my-5">
+
+                {% if cancellationRights.htmlText %}
+                    {{ cancellationRights.htmlText | raw }}
+                {% else %}
+                    <p class="static-page-plain-text">{{ cancellationRights.plainText }}</p>
+                {% endif %}
+
+                {{ LayoutContainer.show("Ceres::StaticPages.CancellationRights") }}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

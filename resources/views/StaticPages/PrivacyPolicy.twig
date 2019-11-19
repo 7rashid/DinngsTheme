@@ -1,0 +1,37 @@
+{% extends getPartial('page-design') %}
+
+{% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+
+{% block PartialHead %}
+    {% embed getPartial('page-metadata') %}
+        {% block title          trans("Ceres::Template.privacyPolicy", {"hyphen": ""}) %}
+        {% block description    trans('Ceres::Template.privacyPolicyMetaDescription') %}
+        {% block robots         ceresConfig.meta.robotsPrivacyPolicy %}
+    {% endembed %}
+{% endblock %}
+
+{% block PageBody %}
+
+    {% set privacyPolicy = services.legalInformation.getPrivacyPolicy() %}
+
+    <div class="container-max page-content">
+        <div class="row">
+            <div class="col-12">
+                {% autoescape false %}
+                    <h1>{{ trans("Ceres::Template.privacyPolicy", {"hyphen": "&shy;"}) }}</h1>
+                {% endautoescape %}
+
+                <hr class="my-5">
+
+                {% if privacyPolicy.htmlText %}
+                    {{ privacyPolicy.htmlText | raw }}
+                {% else %}
+                    <p class="static-page-plain-text">{{ privacyPolicy.plainText }}</p>
+                {% endif %}
+
+                {{ LayoutContainer.show("Ceres::StaticPages.PrivacyPolicy") }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
