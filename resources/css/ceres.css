@@ -13937,7 +13937,7 @@ html.ie #thumb-carousel .owl-stage {
 
 .top-bar {
   color: #fff;
-  background-color: #4D4F4D; }
+  background-color: #35A1CF; }
   @media print {
     .top-bar {
       display: none; } }
@@ -14192,7 +14192,7 @@ html.ie #thumb-carousel .owl-stage {
   padding: .5rem 0;
   display: inline-block; }
   .navbar-brand img {
-    max-height: 3rem; }
+    max-height: 5rem; }
 
 .navbar-nav .nav-item {
   margin: 0 !important; }
@@ -14240,7 +14240,7 @@ html.ie #thumb-carousel .owl-stage {
   .navbar .navbar-nav .dropdown-menu {
     position: relative;
     float: none;
-    background-color: #f4f4f4;
+    background-color: #ffffff;
     border: none; } }
 
 @media (min-width: 768px) {
@@ -20032,4 +20032,3 @@ header .widget {
 
 .hidden-xl-down {
   display: none !important; }
-
